@@ -120,6 +120,9 @@ describe('findLoad function', function() {
             if (error) {
                 done(error);
             } else {
+
+                console.log('results: ', results);
+
                 results.should.be.an.Object.with.properties('load', 'found');
                 
                 results.load.should.be.an.Number.and.be.within(0, 100);
