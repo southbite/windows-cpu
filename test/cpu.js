@@ -90,6 +90,22 @@ describe('processLoad function', function() {
 });
 
 describe('findLoad function', function() {
+
+   var loadIntervalPtr;
+   var loadInterval = 1;
+
+    before(function(){
+
+        loadIntervalPtr = setInterval(function(){
+          var randomOpResult = ((Math.random() * Math.random()) * 100) % 10;
+        }, loadInterval);
+
+      });
+
+      after(function(){
+        clearInterval(loadIntervalPtr);
+      });
+
     it('should call the callback with an object', function(done) {
         cpu.findLoad('system', function(error, results) {
             if (error) {
