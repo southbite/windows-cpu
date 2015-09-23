@@ -93,11 +93,15 @@ describe('findLoad function', function() {
 
    var loadIntervalPtr;
    var loadInterval = 1;
+   var loadCounter = 1;
 
     before(function(){
 
         loadIntervalPtr = setInterval(function(){
           var randomOpResult = ((Math.random() * Math.random()) * 100) % 10;
+          if (loadCounter % 50 == 0)
+            console.log('loadCounter: ', loadCounter);
+          loadCounter++;
         }, loadInterval);
 
       });
