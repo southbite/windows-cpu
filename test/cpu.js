@@ -114,6 +114,31 @@ describe('findLoad function', function() {
             }
         });
     });
+
+     it('should call the callback with an object, for this process', function(done) {
+        cpu.findLoad(process.pid, function(error, results) {
+            if (error) {
+                done(error);
+            } else {
+                results.should.be.an.Object.with.properties('load', 'found');
+                
+                results.load.should.be.an.Number.and.be.within(0, 100);
+                results.found.should.be.an.Array;
+                
+                if (results.found.length <= 0) {
+                    done('results.found length should be greater than 0');
+                }
+                
+                results.found.forEach(function(v) {
+                    v.should.be.an.Object.with.properties('pid', 'process', 'load');
+                    v.pid.should.be.an.Number;
+                    v.process.should.be.a.String.and.not.be.empty;
+                    v.load.should.be.an.Number;
+                });
+                done();
+            }
+        });
+    });
     
     it('should call the callback with an error', function(done) {
         cpu.findLoad('someprocess', function(error, results) {
