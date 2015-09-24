@@ -18,6 +18,9 @@ describe('totalLoad function', function() {
             if (error) {
                 done(error);
             } else {
+
+                console.log('should call the callback with an array of number(s) results: ', results);
+
                 results.should.be.an.Array;
                 
                 if (results.length <= 0) {
@@ -39,6 +42,9 @@ describe('nodeLoad function', function() {
             if (error) {
                 done(error);
             } else {
+
+                console.log('should call the callback with an object results: ', results);
+
                 results.should.be.an.Object.with.properties('load', 'found');
                 
                 results.load.should.be.an.Number.and.be.within(0, 100);
@@ -66,6 +72,9 @@ describe('processLoad function', function() {
             if (error) {
                 done(error);
             } else {
+
+                console.log('should call the callback with an object results: ', results);
+
                 results.should.be.an.Object.with.properties('load', 'found');
                 
                 results.load.should.be.an.Number.and.be.within(0, 100);
@@ -115,6 +124,9 @@ describe('findLoad function', function() {
             if (error) {
                 done(error);
             } else {
+
+                console.log('should call the callback with an object, for this process results: ', results);
+
                 results.should.be.an.Object.with.properties('load', 'found');
                 
                 results.load.should.be.an.Number.and.be.within(0, 100);
@@ -141,7 +153,7 @@ describe('findLoad function', function() {
                 done(error);
             } else {
 
-                console.log('results: ', results);
+                console.log('should call the callback with an object, for this process results: ', results);
 
                 results.should.be.an.Object.with.properties('load', 'found');
                 
